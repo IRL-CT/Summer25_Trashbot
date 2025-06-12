@@ -32,22 +32,32 @@ This project uses **ROS 2 Humble**, which is primarily supported on Linux and Wi
    - **Testing**: To test that ROS 2 successfully installed with an example, go to [ROS 2 Humble Installation on Ubuntu](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html) and try running the **Talker-listener** example.
   
 ## Part 2. Hardware Setup: The ODrive
+Follow the GitHub Documentation [here](https://github.com/IRL-CT/Mobile_HRI_Lab_Hub/blob/main/Lab3/Readme.md#part-b-hardware-setup) for the hardware setup.
 
+## Part 3. Making the Robot Move: Calibration
+Follow the GitHub Documentation [here](https://github.com/IRL-CT/Mobile_HRI_Lab_Hub/blob/main/Lab3/Readme.md#part-c-software-setup) for the calibration of the wheels.
 
-## Part 3. Raspberry Pi Setup: Making the Robot Move
-This'll be edited later, this is just the current documentation to make the wheels move
-1. Terminal 1
+## Part 4. Making the Robot Move: Via Bluetooth
+a. Connecting the Controller
+1. In order to connect to the controller via Bluetooth, first make sure you set up bluetooth in your Raspberry pi.
+    ```plaintext
+    sudo apt install bluez
+    sudo apt install blueman
+    ```
+2. Then, turn on your controller and ensure it's in wireless paiirng mode. Check if your bluetooth is on and check if `Wireless Controller` is an option, and click it to connect. In this case, it's the Sony Dualshock PS4 Controller, and it flashed white/light blue to signal pairing mode, before staying dark blue to indicated its connected. Refer to [bluetoothctl documentation](https://www.mankier.com/1/bluetoothctl#) if stuck.
+3. This [GitHub Documentation](https://github.com/IRL-CT/Mobile_HRI_Lab_Hub/blob/main/Lab5/Readme.md#part-b-read-messages-from-joystick) illustrates the purpose of each command, but for simplicity purposes, follow each terminal's commands one by one below:
+   - Terminal 1
     ```plaintext
     source /opt/ros/humble/setup.bash
     ros2 run joy joy_node
     ```
-2. Terminal 2
+   - Terminal 2
     ```plaintext
     source /opt/ros/humble/setup.bash
     ros2 topic list
     ros2 topic echo /joy
     ```
-3. Terminal 3
+   - Terminal 3
     ```plaintext
     source /opt/ros/humble/setup.bash
     cd ~/mobilehri_ws
@@ -55,12 +65,12 @@ This'll be edited later, this is just the current documentation to make the whee
     source install/setup.bash
     ros2 launch joy_teleop_keymapping mapping_launch.py
     ```
-4. Terminal 4
+   - Terminal 4
     ```plaintext
     source /opt/ros/humble/setup.bash
     ros2 topic echo /cmd_vel
     ```
-4. Terminal 5
+   - Terminal 5
     ```plaintext
     source /opt/ros/humble/setup.bash
     cd ~/mobilehri_ws
