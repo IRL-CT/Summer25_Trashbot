@@ -33,13 +33,13 @@ This project uses **ROS 2 Humble**, which is primarily supported on Linux and Wi
   
 ## Part 2. Hardware Setup: The ODrive
 Follow the GitHub Documentation [here](https://github.com/IRL-CT/Mobile_HRI_Lab_Hub/blob/main/Lab3/Readme.md#part-b-hardware-setup) for the hardware setup. Here's another reference to use:
-![Hardware](hardware_config.png)
+
+<img src="hardware_config.png" alt="Hardware" width="600">
 
 ## Part 3. Making the Robot Move: Calibration
 Follow the GitHub Documentation [here](https://github.com/IRL-CT/Mobile_HRI_Lab_Hub/blob/main/Lab3/Readme.md#part-c-software-setup) for the calibration of the wheels.
 
 ## Part 4. Making the Robot Move: Via Bluetooth
-a. Connecting the Controller
 1. In order to connect to the controller via Bluetooth, first make sure you set up bluetooth in your Raspberry pi.
     ```plaintext
     sudo apt install bluez
