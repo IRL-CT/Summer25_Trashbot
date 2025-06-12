@@ -32,7 +32,8 @@ This project uses **ROS 2 Humble**, which is primarily supported on Linux and Wi
    - **Testing**: To test that ROS 2 successfully installed with an example, go to [ROS 2 Humble Installation on Ubuntu](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html) and try running the **Talker-listener** example.
   
 ## Part 2. Hardware Setup: The ODrive
-Follow the GitHub Documentation [here](https://github.com/IRL-CT/Mobile_HRI_Lab_Hub/blob/main/Lab3/Readme.md#part-b-hardware-setup) for the hardware setup.
+Follow the GitHub Documentation [here](https://github.com/IRL-CT/Mobile_HRI_Lab_Hub/blob/main/Lab3/Readme.md#part-b-hardware-setup) for the hardware setup. Here's another reference to use:
+![Hardware](hardware_config.png)
 
 ## Part 3. Making the Robot Move: Calibration
 Follow the GitHub Documentation [here](https://github.com/IRL-CT/Mobile_HRI_Lab_Hub/blob/main/Lab3/Readme.md#part-c-software-setup) for the calibration of the wheels.
