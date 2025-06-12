@@ -33,4 +33,40 @@ This project uses **ROS 2 Humble**, which is primarily supported on Linux and Wi
   
 ## Part 2. Hardware Setup: The ODrive
 
+
+## Part 3. Raspberry Pi Setup: Making the Robot Move
+This'll be edited later, this is just the current documentation to make the wheels move
+1. Terminal 1
+    ```plaintext
+    source /opt/ros/humble/setup.bash
+    ros2 run joy joy_node
+    ```
+2. Terminal 2
+    ```plaintext
+    source /opt/ros/humble/setup.bash
+    ros2 topic list
+    ros2 topic echo /joy
+    ```
+3. Terminal 3
+    ```plaintext
+    source /opt/ros/humble/setup.bash
+    cd ~/mobilehri_ws
+    colcon build
+    source install/setup.bash
+    ros2 launch joy_teleop_keymapping mapping_launch.py
+    ```
+4. Terminal 4
+    ```plaintext
+    source /opt/ros/humble/setup.bash
+    ros2 topic echo /cmd_vel
+    ```
+4. Terminal 5
+    ```plaintext
+    source /opt/ros/humble/setup.bash
+    cd ~/mobilehri_ws
+    colcon build
+    source install/setup.bash
+    ros2 launch mobile_robot_control mobile_robot_launch.py
+    ```
+
 #### Note: This README is being actively updated.
