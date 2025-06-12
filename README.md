@@ -12,8 +12,8 @@ This project uses **ROS 2 Humble**, which is primarily supported on Linux and Wi
 1. Install **Ubuntu 22.04** on your Raspberry Pi by following the official instructions here: [Ubuntu for Raspberry Pi](https://ubuntu.com/download/raspberry-pi)
    - Flash Ubuntu 22.04 on the SD Card (e.g., 32GB Class 10 microSD card) in another system (e.g., macOS) via an SD Card Reader and then place the SD Card in it's respective slot in the Raspberry Pi.
 2. After installing Ubuntu, install ROS 2 Humble by following these steps: [ROS 2 Humble Installation on Ubuntu](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html)
-   - **Sourcing ROS 2**: In order to use ROS 2 commands, you need to source your environment, which means adding environment variables so your system knows where to find and how to run ROS 2 commands. This could be done in two ways: `source /opt/ros/humble/setup.bash` or `. /opt/ros/humble/setup.bash`. Make sure to run either command fore you run any ROS 2 commands in a new terminal.
-   - **Setting Up ROS 2 Workspace**: A ROS workspace is a directory that contains your ROS packages and follows a specific structure. Create the workspace and source folder by running: `mkdir -p ~/mobilehri_ws/src`.
+   - **Sourcing ROS 2**: In order to use ROS 2 commands, you need to source your environment, which means adding environment variables so your system knows where to find and how to run ROS 2 commands. This could be done in two ways: `source /opt/ros/humble/setup.bash` or `. /opt/ros/humble/setup.bash`. Make sure to run either command before you run any ROS 2 commands in a new terminal.
+   - **Setting Up ROS 2 Workspace**: An ROS workspace is a directory that contains your ROS packages and follows a specific structure. Create the workspace and source folder by running: `mkdir -p ~/mobilehri_ws/src`.
    - **Creating the ROS Package**: Inside the workspace's `src` directly, create a package with dependencies:
      - `cd ~/mobilehri_ws/src`
      - `ros2 pkg create --build-type ament_python my_package --dependencies std_msgs rclpy.`
