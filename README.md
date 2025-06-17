@@ -80,4 +80,39 @@ Follow the GitHub Documentation [here](https://github.com/IRL-CT/Mobile_HRI_Lab_
     ros2 launch mobile_robot_control mobile_robot_launch.py
     ```
 
+## Part 5. Understanding Frank Bu's Configured Trashbots
+
+Each Trashbot uses two Raspberry Pis that require power. Ensure both the laptop and all 4 RPis are connected to **Netgear** WiFi:
+- **Covered RPi** (external, labeled)
+- **Uncovered RPi** (inside the robot)
+
+### Snoopy Controller + Charlie Brown RPi
+1. SSH:
+   - Covered (external): `ssh ubuntu@192.168.2.32`
+   - Uncovered (in robot): `ssh ubuntu@192.168.2.30`
+2. Covered RPi:
+   - `bluetoothctl`
+   - `connect E4:17:D8:8C:5A:0F` (8BitDo Lite 2)
+   - `quit`
+   - `./start_controller.sh` (after calibrating)
+3. Uncovered RPi:
+   - Calibrate with ODrive
+   - `./start_mobile_base.sh`
+
+### Woodstock Controller + Peanuts RPi
+1. SSH:
+   - Covered (external): `ssh ubuntu@192.168.2.29`
+   - Uncovered (in robot): `ssh ubuntu@192.168.2.53`
+2. Covered RPi:
+   - `bluetoothctl`
+   - `connect E4:17:D8:4C:F5:84` (8BitDo Lite 2)
+   - `quit`
+   - `./start_controller.sh` (after calibrating)
+3. Uncovered RPi:
+   - Calibrate with ODrive
+   - `./start_mobile_base.sh`
+
+
+
+
 #### Note: This README is being actively updated.
