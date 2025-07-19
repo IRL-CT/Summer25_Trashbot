@@ -88,6 +88,8 @@ You’ll need the following components to assemble your Trashbot:
 
 Follow the GitHUb Documentation [here](https://github.com/IRL-CT/Mobile_HRI_Lab_Hub/blob/main/Lab3/Readme.md#part-b-hardware-setup) for more information on the setup.
 
+<img src="images/trashbot_front.png" alt="Trashbot Front" width="200"/> <img src="images/trashbot_back.png" alt="Trashbot Back" width="200"/>
+
 ---
 ## Part 3. Making the Robot Move: Calibration
 1. SSH into the Raspberry Pi that's connected to the ODrive.
@@ -166,6 +168,9 @@ Follow the GitHub Documentation [here](https://github.com/IRL-CT/Mobile_HRI_Lab_
     source install/setup.bash
     ros2 launch mobile_robot_control mobile_robot_launch.py
     ```
+
+<img src="images/controllers.png" alt="Controller" width="200"/>
+
 4. However, with the configured Raspberry Pis, you can use the following instructions instead, based off the current 2 confgiured trashbots: Each Trashbot uses two Raspberry Pis that require power. Ensure both the laptop and all 4 RPis are connected to **Netgear** WiFi:
 - **Covered RPi** (external, labeled)
 - **Uncovered RPi** (inside the robot)
