@@ -52,7 +52,8 @@ You’ll need the following components to assemble your Trashbot:
 - 1 HDMI to USB-A Cable  
 - 1 8BitDo Lite2 Controller  
 - 1 Resistor  
-- 1 WiFi Dongle  
+- 1 WiFi
+- 1 Trashbin
 - ~10 Screws, ~8 Nuts, and ~2 Screwdrivers  
 
 ### a. Setting Up the Dolly
@@ -195,5 +196,6 @@ Follow the GitHub Documentation [here](https://github.com/IRL-CT/Mobile_HRI_Lab_
    - Calibrate with ODrive
    - `./start_mobile_base.sh`
 
+When all is set and done, place the trashbin on top of the bot and start moving around the trashbot!
 
 #### Note: This README is being actively updated.
