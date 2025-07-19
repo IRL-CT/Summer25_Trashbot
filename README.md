@@ -53,6 +53,7 @@ You’ll need the following components to assemble your Trashbot:
 - 1 8BitDo Lite2 Controller  
 - 1 Resistor  
 - 1 WiFi
+- 1 Go Pro & Attachment
 - 1 Trashbin
 - ~10 Screws, ~8 Nuts, and ~2 Screwdrivers  
 
