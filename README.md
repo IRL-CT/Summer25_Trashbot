@@ -3,6 +3,7 @@
 
 This is the official README file of the Summer 2025 Trashbot Project, an implementation of the [Mobile Robot Bootcamp](https://github.com/IRL-CT/Mobile_HRI_Lab_Hub/tree/main/Lab0) created by Professor Wendy Ju and Frank Bu. This README guides you through setting up and running the Trashbot prototype from scratch using a Raspberry Pi, ROS 2 Humble, Odrive.
 
+---
 ## Purpose
 
 The Trashbot project involves mounting a trash bin on a mobile robot platform to study human-robot interaction (HRI). Using the Wizard of Oz method, a human operator remotely controls the robot to simulate autonomous behavior, allowing researchers to observe and analyze how people interact with the robot in real-time scenarios.
@@ -30,22 +31,107 @@ This project uses **ROS 2 Humble**, which is primarily supported on Linux and Wi
               └── test/            # Tests
       ```
    - **Testing**: To test that ROS 2 successfully installed with an example, go to [ROS 2 Humble Installation on Ubuntu](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html) and try running the **Talker-listener** example.
-  
-## Part 2. Hardware Setup: The ODrive
-Follow the GitHub Documentation [here](https://github.com/IRL-CT/Mobile_HRI_Lab_Hub/blob/main/Lab3/Readme.md#part-b-hardware-setup) for the hardware setup. Here's another reference to use:
 
-<img src="hardware_config.png" alt="Hardware" width="600">
+---
+## Part 2. Hardware Setup
 
+You’ll need the following components to assemble your Trashbot:
+
+### Materials
+- 1 Deconstructed Hoverboard  
+- 1 Trash Can Dolly with Wheels  
+- 1 Circular Mounting Plate  
+- 2 Configured Raspberry Pis  
+- 1 ODrive Motor Controller  
+- 1 XT60 Power Cable  
+- 2 Filtering PCBs  
+- 2 Hall Sensor Connectors  
+- 2 Power Banks  
+- 1 Lithium-Ion Power Battery  
+- 1 USB-A to USB-C Cable  
+- 1 HDMI to USB-A Cable  
+- 1 8BitDo Lite2 Controller  
+- 1 Resistor  
+- 1 WiFi Dongle  
+- ~10 Screws, ~8 Nuts, and ~2 Screwdrivers  
+
+### a. Setting Up the Dolly
+
+1. **Remove** the circular top of the dolly to make room for mounting components.
+2. **Align** the dolly over the hoverboard so the dolly's 5 smaller wheels surround the hoverboard's 2 larger wheels.
+3. **Locate** the 8 pre-existing screw holes on the hoverboard. Mark the positions of the 4 outer holes onto the dolly, then **drill 4 matching holes**.
+4. **Secure** the dolly to the hoverboard using 4 screws and 4 nuts through the holes you just made.
+5. Inside the circular part of the dolly, **align the circular plate** with the 4 inner mounting holes. Mark the positions onto the plate.  
+   - **Laser-cut** two horizontal ovals between those holes (~2 inches apart).  
+   - Drill two additional holes to mount the ODrive.
+6. **Attach** the circular plate to the dolly using 4 more screws and 4 nuts.
+
+### b. Attaching the Hardware
+
+1. **Connect** the XT60 Power Cable to the ODrive (red = positive, black = negative).
+2. **Mount** the ODrive to the circular plate using 2 screws and 2 nuts.
+3. **Plug in** the 2 hall sensor connectors to the bottom of the hoverboard motors and route them through the oval holes in the circular plate.
+4. **Attach** the filtering PCBs to the hall sensor connectors:  
+   - Ensure matching colors: red to red, black to black  
+   - The 5-pin layout on each PCB should go from GND to 5V  
+   - Place the **right** PCB on the far right side; the **left** PCB right next to it (leave one slot of spacing)
+5. You will see **2 sets of yellow, blue, and green wires** (one from each motor). Route each set through the oval holes and screw them into the two green terminal blocks on the ODrive:  
+   - **Left motor wires → Left terminal block**  
+   - **Right motor wires → Right terminal block**  
+   - **Wire order (left to right)**: Yellow, Blue, Green
+6. **Insert** the resistor into the middle of the ODrive. You may also use it to help prop up the ODrive for stability.
+7. **Connect** the motor-controller Raspberry Pi to the ODrive using the HDMI to USB-A cable. Set this Pi aside for now.
+8. **Power** the ODrive by connecting the lithium-ion battery via the XT60 cable.
+9. **Connect** a power bank to the first Raspberry Pi (USB-A to USB-C).
+10. **Connect** the second power bank to the second Raspberry Pi (USB-A to USB-C).
+
+Follow the GitHUb Documentation [here](https://github.com/IRL-CT/Mobile_HRI_Lab_Hub/blob/main/Lab3/Readme.md#part-b-hardware-setup) for more information on the setup.
+
+---
 ## Part 3. Making the Robot Move: Calibration
-Follow the GitHub Documentation [here](https://github.com/IRL-CT/Mobile_HRI_Lab_Hub/blob/main/Lab3/Readme.md#part-c-software-setup) for the calibration of the wheels.
+1. SSH into the Raspberry Pi that's connected to the ODrive.
+```
+# Open a terminal on your own laptop.
+# The IP address for your RPi should be displayed on the miniTFT screen.
+ssh mobilehri@YOUR-IP
+# Replace YOUR-IP with the ip address displayed on your screen. (e.g. ssh mobilehri@10.55.131.31)
+# Say yes if prompted.
+# Enter in your password.
+```
+2. Download the initial parameters by running the following commands and open ODrive Tool:
+```
+# Download config file to your RPi
+curl -LJO https://raw.githubusercontent.com/FAR-Lab/Mobile_HRI_Lab_Hub/main/Lab3/mobilehri_config.json
+# Load the config file to your ODrive
+odrivetool restore-config mobilehri_config.json
+# Ignore the warnings about some parameters not being loaded. You will recalibrate the motors anyway.
+# In the same remote session (RPi)
+odrivetool
+```
+3. Since your ODrive is on (via the lithium power battery) you should have a message "Connected to ODrive xxxxxxxx" otherwise, you may want to re-connect the power battery. First, you will clear errors with `odrv0.clear_errors()` and dump errors with `dump_errors(odrv0)`
+4. Calibrate both wheels with the following:
+```
+odrv0.axis0.requested_state = AXIS_STATE_FULL_CALIBRATION_SEQUENCE
+odrv0.axis1.requested_state = AXIS_STATE_FULL_CALIBRATION_SEQUENCE
+```
+They should both be spinning in opposite directions.
+5. Now, check if there were any errors with `dump_errors(odrv0)`. If there are any errors, first disconnect the lithium power battery and check that all the wires are secure and implemented correctly. Then, connect the battery again, and manually clear the errors. You could use [this](https://discourse.odriverobotics.com/t/list-of-all-commands/9773) as a reference.
+6. Calibrate again, ensure it's successful with no errors. Once there's no errors, save and reboot:
+```
+odrv0.save_configuration()
+odrv0.reboot()
+```
 
+Follow the GitHub Documentation [here](https://github.com/IRL-CT/Mobile_HRI_Lab_Hub/blob/main/Lab3/Readme.md#part-c-software-setup) for more information on the calibration of the wheels.
+
+---
 ## Part 4. Making the Robot Move: Via Bluetooth
 1. In order to connect to the controller via Bluetooth, first make sure you set up bluetooth in your Raspberry pi.
     ```plaintext
     sudo apt install bluez
     sudo apt install blueman
     ```
-2. Then, turn on your controller and ensure it's in wireless paiirng mode. Check if your bluetooth is on and check if `Wireless Controller` is an option, and click it to connect. In this case, it's the Sony Dualshock PS4 Controller, and it flashed white/light blue to signal pairing mode, before staying dark blue to indicated its connected. Refer to [bluetoothctl documentation](https://www.mankier.com/1/bluetoothctl#) if stuck.
+2. Then, turn on your controller and ensure it's in wireless paiirng mode. Check if your bluetooth is on and check if `Wireless Controller` is an option, and click it to connect. In this case, it's the 8BitDo Lite 2 controller, and it flashed white/light blue to signal pairing mode, before staying dark blue to indicated its connected. Refer to [bluetoothctl documentation](https://www.mankier.com/1/bluetoothctl#) if stuck.
 3. This [GitHub Documentation](https://github.com/IRL-CT/Mobile_HRI_Lab_Hub/blob/main/Lab5/Readme.md#part-b-read-messages-from-joystick) illustrates the purpose of each command, but for simplicity purposes, follow each terminal's commands one by one below:
    - Terminal 1
     ```plaintext
@@ -79,10 +165,7 @@ Follow the GitHub Documentation [here](https://github.com/IRL-CT/Mobile_HRI_Lab_
     source install/setup.bash
     ros2 launch mobile_robot_control mobile_robot_launch.py
     ```
-
-## Part 5. Understanding Frank Bu's Configured Trashbots
-
-Each Trashbot uses two Raspberry Pis that require power. Ensure both the laptop and all 4 RPis are connected to **Netgear** WiFi:
+4. However, with the configured Raspberry Pis, you can use the following instructions instead, based off the current 2 confgiured trashbots: Each Trashbot uses two Raspberry Pis that require power. Ensure both the laptop and all 4 RPis are connected to **Netgear** WiFi:
 - **Covered RPi** (external, labeled)
 - **Uncovered RPi** (inside the robot)
 
@@ -111,8 +194,6 @@ Each Trashbot uses two Raspberry Pis that require power. Ensure both the laptop 
 3. Uncovered RPi:
    - Calibrate with ODrive
    - `./start_mobile_base.sh`
-
-
 
 
 #### Note: This README is being actively updated.
