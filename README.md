@@ -135,8 +135,8 @@ Follow the GitHub Documentation [here](https://github.com/IRL-CT/Mobile_HRI_Lab_
     sudo apt install bluez
     sudo apt install blueman
     ```
-2. Then, turn on your controller and ensure it's in wireless paiirng mode. Check if your bluetooth is on and check if `Wireless Controller` is an option, and click it to connect. In this case, it's the 8BitDo Lite 2 controller, and it flashed white/light blue to signal pairing mode, before staying dark blue to indicated its connected. Refer to [bluetoothctl documentation](https://www.mankier.com/1/bluetoothctl#) if stuck.
-3. This [GitHub Documentation](https://github.com/IRL-CT/Mobile_HRI_Lab_Hub/blob/main/Lab5/Readme.md#part-b-read-messages-from-joystick) illustrates the purpose of each command, but for simplicity purposes, follow each terminal's commands one by one below:
+2. Then, turn on your controller and ensure it's in wireless paiirng mode. Check if your bluetooth is on and check if `Wireless Controller` is an option, and click it to connect. In this case, it's the 8BitDo Lite 2 controller, and it flashed white/light blue to signal pairing mode, before staying dark blue to indicated its connected. Refer to [bluetoothctl documentation](https://www.mankier.com/1/bluetoothctl#) if stuck. The left joystick is to move forward/backward, and the right joystick is to spin counterclockwise/clockwise.
+3. This [GitHub Documentation](https://github.com/IRL-CT/Mobile_HRI_Lab_Hub/blob/main/Lab5/Readme.md#part-b-read-messages-from-joystick) illustrates the purpose of each command, but for simplicity purposes, follow each terminal's commands one by one below for testing:
    - Terminal 1
     ```plaintext
     source /opt/ros/humble/setup.bash
@@ -172,34 +172,17 @@ Follow the GitHub Documentation [here](https://github.com/IRL-CT/Mobile_HRI_Lab_
 
 <img src="images/controllers.png" alt="Controller" width="200"/>
 
-4. However, with the configured Raspberry Pis, you can use the following instructions instead, based off the current 2 confgiured trashbots: Each Trashbot uses two Raspberry Pis that require power. Ensure both the laptop and all 4 RPis are connected to **Netgear** WiFi:
-- **Covered RPi** (external, labeled)
-- **Uncovered RPi** (inside the robot)
-
-### Snoopy Controller + Charlie Brown RPi
-1. SSH:
-   - Covered (external): `ssh ubuntu@192.168.2.32`
-   - Uncovered (in robot): `ssh ubuntu@192.168.2.30`
-2. Covered RPi:
+4. However, with the configured Raspberry Pis, you can use the following instructions instead, based off your current confgiured trashbot. Your Trashbot uses two Raspberry Pis that require power.
+- **External RPi**
+- **Internal RPi**
+1. SSH into both RPIs on two different terminals.
+2. External RPi:
    - `bluetoothctl`
-   - `connect E4:17:D8:8C:5A:0F` (8BitDo Lite 2)
-   - `quit`
-   - `./start_controller.sh` (after calibrating)
-3. Uncovered RPi:
-   - Calibrate with ODrive
-   - `./start_mobile_base.sh`
-
-### Woodstock Controller + Peanuts RPi
-1. SSH:
-   - Covered (external): `ssh ubuntu@192.168.2.29`
-   - Uncovered (in robot): `ssh ubuntu@192.168.2.53`
-2. Covered RPi:
-   - `bluetoothctl`
-   - `connect E4:17:D8:4C:F5:84` (8BitDo Lite 2)
-   - `quit`
-   - `./start_controller.sh` (after calibrating)
-3. Uncovered RPi:
-   - Calibrate with ODrive
+   - `connect XX:XX:XX:XX:XX:XX` (your controller's IP address)
+   - `quit` (quit only once you've successfully connected to your controller)
+   - `./start_controller.sh` (only after `./start_mobile_base.sh`)
+3. Internal RPi:
+   - Calibrate with ODrive (ensure there are no errors)
    - `./start_mobile_base.sh`
 
 When all is set and done, place the trashbin on top of the bot and start moving around the trashbot!
