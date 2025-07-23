@@ -79,25 +79,44 @@ You’ll need the following components to assemble your Trashbot:
 ### b. Attaching the Hardware
 
 1. **Connect** the XT60 Power Cable to the ODrive (red = positive, black = negative).
+
+<img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2b1a_odrive.png" alt="Alt text" width="200"/>
+
 2. **Mount** the ODrive to the circular plate using 2 screws and 2 nuts.
+
+<img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2b2a_odrive.png" alt="Alt text" width="200"/>
+
 3. **Plug in** the 2 hall sensor connectors to the bottom of the hoverboard motors and route them through the oval holes in the circular plate.
+
+<img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2b3a_pcb.png" alt="Alt text" width="200"/>
+
 4. **Attach** the filtering PCBs to the hall sensor connectors:  
    - Ensure matching colors: red to red, black to black  
    - The 5-pin layout on each PCB should go from GND to 5V  
    - Place the **right** PCB on the far right side; the **left** PCB right next to it (leave one slot of spacing)
+
+<img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2b4a_pcb.png" alt="Alt text" width="400"/>
+
 5. You will see **2 sets of yellow, blue, and green wires** (one from each motor). Route each set through the oval holes and screw them into the two green terminal blocks on the ODrive:  
    - **Left motor wires → Left terminal block**  
    - **Right motor wires → Right terminal block**  
    - **Wire order (left to right)**: Yellow, Blue, Green
+
+<img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2b5a_ybg.png" alt="Alt text" width="200"/>
+
 6. **Insert** the resistor into the middle of the ODrive. You may also use it to help prop up the ODrive for stability.
+
+<img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2b6a_resistor.png" alt="Alt text" width="200"/>
+
 7. **Connect** the motor-controller Raspberry Pi to the ODrive using the HDMI to USB-A cable. Set this Pi aside for now.
 8. **Power** the ODrive by connecting the lithium-ion battery via the XT60 cable.
 9. **Connect** a power bank to the first Raspberry Pi (USB-A to USB-C).
 10. **Connect** the second power bank to the second Raspberry Pi (USB-A to USB-C).
 
-Follow the GitHUb Documentation [here](https://github.com/IRL-CT/Mobile_HRI_Lab_Hub/blob/main/Lab3/Readme.md#part-b-hardware-setup) for more information on the setup.
+<img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2b9a_trashbot_front.png" alt="Alt text" width="200"/>
+<img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2b_9b_trashbot_back.png" alt="Alt text" width="200"/>
 
-<img src="images/trashbot_front.png" alt="Trashbot Front" width="200"/> <img src="images/trashbot_back.png" alt="Trashbot Back" width="200"/>
+Follow the GitHub Documentation [here](https://github.com/IRL-CT/Mobile_HRI_Lab_Hub/blob/main/Lab3/Readme.md#part-b-hardware-setup) for more information on the setup.
 
 ---
 ## Part 3. Making the Robot Move: Calibration
