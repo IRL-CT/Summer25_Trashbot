@@ -113,8 +113,7 @@ You’ll need the following components to assemble your Trashbot:
 9. **Connect** a power bank to the first Raspberry Pi (USB-A to USB-C).
 10. **Connect** the second power bank to the second Raspberry Pi (USB-A to USB-C).
 
-<img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2b9a_trashbot_front.png" alt="Alt text" width="200"/>
-<img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2b_9b_trashbot_back.png" alt="Alt text" width="200"/>
+<img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2b9a_trashbot_front.png" alt="Alt text" width="200"/> <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2b_9b_trashbot_back.png" alt="Alt text" width="200"/>
 
 Follow the GitHub Documentation [here](https://github.com/IRL-CT/Mobile_HRI_Lab_Hub/blob/main/Lab3/Readme.md#part-b-hardware-setup) for more information on the setup.
 
