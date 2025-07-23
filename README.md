@@ -162,41 +162,7 @@ Follow the GitHub Documentation [here](https://github.com/IRL-CT/Mobile_HRI_Lab_
     sudo apt install blueman
     ```
 2. Then, turn on your controller and ensure it's in wireless paiirng mode. Check if your bluetooth is on and check if `Wireless Controller` is an option, and click it to connect. In this case, it's the 8BitDo Lite 2 controller, and it flashed white/light blue to signal pairing mode, before staying dark blue to indicated its connected. Refer to [bluetoothctl documentation](https://www.mankier.com/1/bluetoothctl#) if stuck. The left joystick is to move forward/backward, and the right joystick is to spin counterclockwise/clockwise.
-3. This [GitHub Documentation](https://github.com/IRL-CT/Mobile_HRI_Lab_Hub/blob/main/Lab5/Readme.md#part-b-read-messages-from-joystick) illustrates the purpose of each command, but for simplicity purposes, follow each terminal's commands one by one below for testing:
-   - Terminal 1
-    ```plaintext
-    source /opt/ros/humble/setup.bash
-    ros2 run joy joy_node
-    ```
-   - Terminal 2
-    ```plaintext
-    source /opt/ros/humble/setup.bash
-    ros2 topic list
-    ros2 topic echo /joy
-    ```
-   - Terminal 3
-    ```plaintext
-    source /opt/ros/humble/setup.bash
-    cd ~/mobilehri_ws
-    colcon build
-    source install/setup.bash
-    ros2 launch joy_teleop_keymapping mapping_launch.py
-    ```
-   - Terminal 4
-    ```plaintext
-    source /opt/ros/humble/setup.bash
-    ros2 topic echo /cmd_vel
-    ```
-   - Terminal 5
-    ```plaintext
-    source /opt/ros/humble/setup.bash
-    cd ~/mobilehri_ws
-    colcon build
-    source install/setup.bash
-    ros2 launch mobile_robot_control mobile_robot_launch.py
-    ```
-
-4. However, with the configured Raspberry Pis, you can use the following instructions instead, based off your current confgiured trashbot. Your Trashbot uses two Raspberry Pis that require power.
+3. With the configured Raspberry Pis, you can use the following instructions. Your Trashbot uses two Raspberry Pis that require power.
 - **External RPi**
 - **Internal RPi**
 1. SSH into both RPIs on two different terminals.
