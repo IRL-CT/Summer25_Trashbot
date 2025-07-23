@@ -197,8 +197,6 @@ Follow the GitHub Documentation [here](https://github.com/IRL-CT/Mobile_HRI_Lab_
     ros2 launch mobile_robot_control mobile_robot_launch.py
     ```
 
-<img src="images/controllers.png" alt="Controller" width="200"/>
-
 4. However, with the configured Raspberry Pis, you can use the following instructions instead, based off your current confgiured trashbot. Your Trashbot uses two Raspberry Pis that require power.
 - **External RPi**
 - **Internal RPi**
