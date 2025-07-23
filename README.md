@@ -55,7 +55,9 @@ You’ll need the following components to assemble your Trashbot:
 - 1 WiFi
 - 1 Go Pro & Attachment
 - 1 Trashbin
-- ~10 Screws, ~8 Nuts, and ~2 Screwdrivers  
+- ~10 Screws, ~8 Nuts, and ~2 Screwdrivers
+
+<img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/m_bolts_and_nuts.png" alt="Alt text" width="300"/> <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/m_configured_pis.png" alt="Alt text" width="185"/> <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/m_filtering_pcbs.png" alt="Alt text" width="315"/> <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/m_go_pro_back.png" alt="Alt text" width="200"/> <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/m_go_pro_front.png" alt="Alt text" width="200"/> <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/m_hdmi_cable.png" alt="Alt text" width="300"/> <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/m_lithium_battery.png" alt="Alt text" width="300"/> <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/m_power_batteries_plus_wire.png" alt="Alt text" width="200"/> <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/m_single_controller.png" alt="Alt text" width="300"/> <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/m_trashbin.png" alt="Alt text" width="250"/> <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/m_wifi.png" alt="Alt text" width="280"/> <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/m_xt60_cable.png" alt="Alt text" width="400"/>
 
 ### a. Setting Up the Dolly
 
