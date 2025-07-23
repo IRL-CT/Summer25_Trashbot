@@ -62,8 +62,14 @@ You’ll need the following components to assemble your Trashbot:
 ### a. Setting Up the Dolly
 
 1. **Remove** the circular top of the dolly to make room for mounting components.
+
+<img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2a1a_chasis.png" alt="Alt text" width="200"/> <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2a1b_cut_chasis.png" alt="Alt text" width="200"/> <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2a1c_cutting_chasis.png" alt="Alt text" width="200"/>
+
 2. **Align** the dolly over the hoverboard so the dolly's 5 smaller wheels surround the hoverboard's 2 larger wheels.
 3. **Locate** the 8 pre-existing screw holes on the hoverboard. Mark the positions of the 4 outer holes onto the dolly, then **drill 4 matching holes**.
+
+<img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2a3a_drilling_outer_holes.png" alt="Alt text" width="200"/>  <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2a3b_drilled_outer_holes.png" alt="Alt text" width="200"/>  <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2a3c_drilled_outer_holes_bottom.png" alt="Alt text" width="200"/> <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2a3d_outer_screws.png" alt="Alt text" width="300"/> 
+
 4. **Secure** the dolly to the hoverboard using 4 screws and 4 nuts through the holes you just made.
 5. Inside the circular part of the dolly, **align the circular plate** with the 4 inner mounting holes. Mark the positions onto the plate.  
    - **Laser-cut** two horizontal ovals between those holes (~2 inches apart).  
