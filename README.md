@@ -40,9 +40,11 @@ You’ll need the following components to assemble your Trashbot:
 ### Materials
 - 1 Deconstructed Hoverboard  
 - 1 [Trash Can Dolly with Wheels](https://www.amazon.com/Rubbermaid-Commercial-Products-BRUTE-FG264000BLA/dp/B00002N8AI/ref=sr_1_3?crid=16FBLMR9AEEB1&keywords=Trash%2BCan%2BDolly%2Bwith%2BWheels&qid=1649170110&sprefix=trash%2Bcan%2Bdolly%2Bwith%2Bwheels%2Caps%2C90&sr=8-3&th=1) 
-   - (Amazon link for the same piece we purhcased)
-- 1 [Circular Mounting Plate](images/trashbot_guidlines_all.ai) 
-   - (Laser cutting file) 
+   - (Amazon link for the same piece we used)
+- 1 [Circular Mounting Plate](images/trashbot_guidlines_inner.ai) 
+   - (Laser cutting file)
+- 1 [Circular Mounting Plate](images/trashbot_guidlines_all.ai)
+   - (Laser cutting file)
 - 2 Configured Raspberry Pis  
 - 1 ODrive Motor Controller  
 - 1 XT60 Power Cable  
@@ -67,16 +69,16 @@ You’ll need the following components to assemble your Trashbot:
 
 <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2a1a_chasis.png" alt="Alt text" width="200"/>  <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2a1c_cutting_chasis.png" alt="Alt text" width="200"/> <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2a1b_cut_chasis.png" alt="Alt text" width="200"/>
 
-2. 5. **Laser-cut** the [circular plate](images/trashbot_guidlines_all.ai). Use the **outer part** as the **Drilling Template**.
+2. **Laser-cut** the [drilling template + circular plate](images/trashbot_guidlines_all.ai). We suggest using 3mm cardboard as the material here. Use the **outer part** as the **Drilling Template**. The inner part could be use as the template of the ODirve+Raspberry Pi holder.
    
-<img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/Laser_cut%20pic.png" alt="Laser cut file" width="200"/> 
+<img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/Laser_cut%20pic.png" alt="Laser cut file" width="200"/> <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/Laser_cut_template(1).png" alt="template" width="200"/> 
 
 3.  **Align** the dolly over the **Drilling Template** so the dolly's 5 smaller wheels surround the hoverboard's 2 larger wheels. **Locate** the 8 pre-existing screw holes on the hoverboard. Mark the positions of the 4 outer holes onto the dolly, then **drill 4 matching holes**.
 
 <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2a3a_drilling_outer_holes.png" alt="Alt text" width="200"/>  <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2a3b_drilled_outer_holes.png" alt="Alt text" width="200"/>  <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2a3c_drilled_outer_holes_bottom.png" alt="Alt text" width="200"/> <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2a3d_outer_screws.png" alt="Alt text" width="300"/> 
 
 4. **Secure** the dolly to the hoverboard using 4 screws and 4 nuts through the holes you just made.
-5. **Laser-cut** the [circular plate](images/trashbot_guidlines_all.ai). We recommend using 3mm acrylic board. Images below are laser cut files and 3mm cardboard template we made.
+5. If the cardboard template works well, **Laser-cut** the [circular plate](images/trashbot_guidlines_inner.ai). We recommend using 3mm acrylic board, but 3mm plywood would work as well. 
    
 <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/Laser_cut%20pic.png" alt="Laser cut file" width="200"/>  <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2a1c_cutting_chasis.png" alt="Alt text" width="200"/> 
 
