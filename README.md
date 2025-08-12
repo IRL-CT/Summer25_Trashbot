@@ -95,14 +95,22 @@ You’ll need the following components to assemble your Trashbot:
 
 <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2b2a_odrive.png" alt="Alt text" width="200"/>
 
-3. **Plug in** the 2 hall sensor connectors to the bottom of the hoverboard motors and route them through the oval holes in the circular plate.
+3. Made two customized PCBs with capacitors to reduce the signal interference between two wheels for Motor0 and Motor1. See ODrive forum for the [detailed reasons](https://discourse.odriverobotics.com/t/encoder-error-error-illegal-hall-state/1047/12?page=2). Cut a portion from the Breadboard, solder capacitors and connector pins on it base on this layout. Repeat for another one.
+
+<img src="images/breadboard_wiring.png" alt="Breadboard wiring" width="200"/>
+
+The wired PCB should look like this:
+
+<img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/IMG_7593.jpg" alt="Front" width="200"/><img src="images/backside.png" alt="Back" width="200"/>
+
+**Solder** the hall sensor wires from the bottom of the hoverboard motors to the customized PCB, and route them through the rectanglar holes in the circular plate.
 
 <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2b3a_pcb.png" alt="Alt text" width="200"/>
 
-4. **Attach** the filtering PCBs to the hall sensor connectors:  
-   - Ensure matching colors: red to red, black to black  
-   - The 5-pin layout on each PCB should go from GND to 5V  
-   - Place the **right** PCB on the far right side; the **left** PCB right next to it (leave one slot of spacing)
+ - Ensure matching wire and pin: red to 5V,  yellow to A, blue to B, green to Z, and black to GND.
+ - Place one PCB on the far right side for M0; another PCB right next to it (both leave 3.3V slot)
+
+4. **Attach** the customized PCBs to the hall sensor connectors:  
 
 <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2b4a_pcb.png" alt="Alt text" width="400"/>
 
