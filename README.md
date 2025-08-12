@@ -136,7 +136,8 @@ Follow the GitHub Documentation [here](https://github.com/IRL-CT/Mobile_HRI_Lab_
 
 ---
 ## Part 3. Making the Robot Move: Calibration
-1. SSH into the Raspberry Pi that's connected to the ODrive.
+1. Use the [RPi Imager](https://www.raspberrypi.com/software/) to write [image](https://drive.google.com/file/d/1PMWyJUoA-CJ73vktrp3nPKiykwzOaauU/view?usp=sharing) to the SD cards (You will need to flash one card per group). [Online Guide](https://howchoo.com/pi/raspberry-pi-imager#write-a-custom-image). Please do this before Thursday's lab.
+2. SSH into the Raspberry Pi that's connected to the ODrive.
 ```
 # Open a terminal on your own laptop.
 # The IP address for your RPi should be displayed on the miniTFT screen.
