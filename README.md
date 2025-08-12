@@ -174,8 +174,6 @@ Follow the GitHub Documentation [here](https://github.com/IRL-CT/Mobile_HRI_Lab_
 
 ---
 ## Part 4. Making the Robot Move: Via Bluetooth
-# Give the robot moves
-**List the names and NetID for your partners here.**
 
 Now, let's control our robots to make them move intuitively. 
 
@@ -183,20 +181,10 @@ As you have seen, it's pretty easy to control the wheels with Python! However, i
 
 ## Prep
 
-### For this lab, you will need:
+### For this part, you will need:
 1. Your Computer
 2. Joystick Controller
 3. Your set of hoverboard + ODrive
-4. (optional) Cardboard to make the proto-chassis for your robot
-
-### Deliverables for this lab are: 
-
-1. Videos of you controlling the wheels with your joystick controller properly.
-2. Three ideas on how to use controllers' rumble feature for Wizard of Oz control.
-3. (optional) Documentation of the robot proto-chassis
-
-### The Report 
-This README.md page in your own repository should be edited to include both the work you have done, and your thinking behind the work(the deliverables mentioned above). Following the format below, you can delete everything but the headers and the sections between the **stars**. Write the answers to the questions under the starred sentences. Include any material that explains what you did in this lab hub folder, and link it in your README.md for the lab.
 
 ## Lab Overview
 For this assignment, you are going to:
@@ -210,10 +198,6 @@ C) [Make it rumble](#part-c-make-it-rumble)
 D) [Map buttons to control](#part-d-map-buttons-to-control)
 
 E) [Try it with your hoverboard!](#part-e-try-it-with-your-hoverboard!) 
-
-F) (optional) [Mount your wheels to a prototype chassis](#part-f-mount-your-wheels-to-chassis)
-
-Labs are due on Tuesdays before class. Make sure this page is linked to on your main class hub page.
 
 ## Part A. Connect Joystick Controller to RPi
 Our wireless joystick controller connects to RPi through Bluetooth. 
@@ -229,10 +213,10 @@ sudo apt install bluez*
 sudo apt install blueman # not the musical group, it is short for bluetooth management. 
 ```
 3. Open bluetooth management
-<img src="Images/blueman.jpg" width="600"/>
+<img src="images/blueman.jpg" width="600"/>
 4. Open your joystick controller and boot it to wireless pairing mode. Instructions are printed on the back of the box.
 5. While your controller is double-flashing, click the search button in the bluetooth manager. You should be able to find your controller.  Right-click on the controller and select Connect. Once connected, your controller LED should turn blue.
-<img src="Images/blueman_manager.jpg" width="600"/>
+<img src="images/blueman_manager.jpg" width="600"/>
 
 ## Part B. Read Messages from Joystick
 Now, you have successfully paired your controller with your RPi. Let's access the values from the Joystick through ROS 2.
@@ -383,8 +367,6 @@ ros2 topic pub -r 10 /joy/set_feedback sensor_msgs/msg/JoyFeedback "{type: 1, id
 
 Try it! Make your controller rumble!
 
-** **Come up with three ways where the rumble feature can benefit WoZ deployment or other applications. Describe these in your deliverables.** **
-
 ## Part D. Map buttons to control
 I have written some code that subscribe to the `/joy` topic and publish a [twist](http://docs.ros.org/en/lunar/api/geometry_msgs/html/msg/Twist.html) message accordingly. A twist message consists of two vectors, one represents linear velocity and one represents angular velocity.
 
@@ -401,7 +383,7 @@ colcon build
 # Summary: 3 packages finished [16.5s]
 # 3 packages had stderr output: joy_teleop_keymapping mobile_robot_control picamera
 ```
-Take a look at `~/mobilehri_ws/src/mobilehri2023/joy_teleop_keymapping/joy_teleop_keymapping/keymapping_node.py`.
+Take a look at `https://github.com/IRL-CT/mobilehri_ws/src/mobilehri2023/joy_teleop_keymapping/joy_teleop_keymapping/keymapping_node.py`.
 Pay attention to how the values are accessed from joystick controller and map to a twist message. 
 ```
 source install/setup.bash
@@ -415,7 +397,7 @@ ros2 topic echo /cmd_vel
 ```
 We defined the L1 button to be the safety button to avoid unintentional control, this is a simple `if` statement in the code.
 
-> Feel free to customize my code (`~/mobilehri_ws/src/mobilehri2023/joy_teleop_keymapping/joy_teleop_keymapping/keymapping_node.py`) however you want. There are so many buttons and triggers on the controller, be creative!
+> Feel free to customize my code (`https://github.com/IRL-CT/mobilehri_ws/src/mobilehri2023/joy_teleop_keymapping/joy_teleop_keymapping/keymapping_node.py`) however you want. There are so many buttons and triggers on the controller, be creative!
 
 ## Part E. Try it with your hoverboard!
 Let's do some math! (This is probably the only math you will do all semester, so a highlight of the course.) In the previous step, we mapped joystick controller commands to a message type called twist (mainly linear velocity and angular velocity). We need another layer of computation to convert twist to commands that ODrive understands (angular velocity for wheels on each axis). Imagine the following simplified diagram. 
@@ -426,7 +408,7 @@ In this problem, the following variables are known
 - $l$: wheel track distance (distance between the wheels)
 - $r$: wheel radius (not shown in the diagram)
 
-<img src="Images/diff_drive.jpg" width="800"/>
+<img src="images/diff_drive.jpg" width="800"/>
 
 When the hoverboard is moving in a straight line (forward/backword), the control is pretty straight forward. When the hoverboard is turning, the hoverboard must rotate about a point, Instantaneous Center of Curvature (ICC), that lies along the common left and right wheel axis (as shown above). (When the robot is moving in a straight line, Instantaneous Center of Curvature is infinitely distant)
 
@@ -463,7 +445,7 @@ v_l = (v - \frac{lw}{2})/r
 v_r = (v + \frac{lw}{2})/r
 ```
 
-**TODO**: Complete the code in `~/mobilehri_ws/src/mobilehri2023/mobile_robot_control/mobile_robot_control/odrive_command.py` with the computation we just did. I strongly recommend you to use VS Code to code (check previous lab for details). Your **TODOs** are on line 54 and 74. For now, you don't need to make changes for wheel track distance, but you need to after you made your own robot.
+**TODO**: Complete the code in `https://github.com/IRL-CT/mobilehri_ws/src/mobilehri2023/mobile_robot_control/mobile_robot_control/odrive_command.py` with the computation we just did. I strongly recommend you to use VS Code to code (check previous lab for details). Your **TODOs** are on line 54 and 74. For now, you don't need to make changes for wheel track distance, but you need to after you made your own robot.
 
 Wheel track distance is renamed as `self.wheel_track`. In the future, change the wheel track distance to match your own robot. 
 
