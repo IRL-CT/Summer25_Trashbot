@@ -67,16 +67,21 @@ You’ll need the following components to assemble your Trashbot:
 
 <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2a1a_chasis.png" alt="Alt text" width="200"/>  <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2a1c_cutting_chasis.png" alt="Alt text" width="200"/> <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2a1b_cut_chasis.png" alt="Alt text" width="200"/>
 
-2. **Align** the dolly over the hoverboard so the dolly's 5 smaller wheels surround the hoverboard's 2 larger wheels.
-3. **Locate** the 8 pre-existing screw holes on the hoverboard. Mark the positions of the 4 outer holes onto the dolly, then **drill 4 matching holes**.
+2. 5. **Laser-cut** the [circular plate](images/trashbot_guidlines_all.ai). Use the **outer part** as the **Drilling Template**.
+   
+<img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/Laser_cut%20pic.png" alt="Laser cut file" width="200"/> 
+
+3.  **Align** the dolly over the **Drilling Template** so the dolly's 5 smaller wheels surround the hoverboard's 2 larger wheels. **Locate** the 8 pre-existing screw holes on the hoverboard. Mark the positions of the 4 outer holes onto the dolly, then **drill 4 matching holes**.
 
 <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2a3a_drilling_outer_holes.png" alt="Alt text" width="200"/>  <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2a3b_drilled_outer_holes.png" alt="Alt text" width="200"/>  <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2a3c_drilled_outer_holes_bottom.png" alt="Alt text" width="200"/> <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2a3d_outer_screws.png" alt="Alt text" width="300"/> 
 
 4. **Secure** the dolly to the hoverboard using 4 screws and 4 nuts through the holes you just made.
 5. **Laser-cut** the [circular plate](images/trashbot_guidlines_all.ai). We recommend using 3mm acrylic board. Images below are laser cut files and 3mm cardboard template we made.
+   
 <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/Laser_cut%20pic.png" alt="Laser cut file" width="200"/>  <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2a1c_cutting_chasis.png" alt="Alt text" width="200"/> 
-6. Inside the circular part of the dolly, **align the circular plate** with the 4 inner mounting holes. Mark the positions onto the plate.  
-7. **Attach** the circular plate to the dolly using 4 more screws and 4 nuts.
+
+7. Inside the circular part of the dolly, **align the circular plate** with the 4 inner mounting holes. Mark the positions onto the plate.  
+8. **Attach** the circular plate to the dolly using 4 more screws and 4 nuts.
 
 ### b. Attaching the Hardware
 
