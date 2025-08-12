@@ -39,7 +39,7 @@ You’ll need the following components to assemble your Trashbot:
 
 ### Materials
 - 1 Deconstructed Hoverboard  
-- 1 [Trash Can Dolly with Wheels(https://www.amazon.com/Rubbermaid-Commercial-Products-BRUTE-FG264000BLA/dp/B00002N8AI/ref=sr_1_3?crid=16FBLMR9AEEB1&keywords=Trash%2BCan%2BDolly%2Bwith%2BWheels&qid=1649170110&sprefix=trash%2Bcan%2Bdolly%2Bwith%2Bwheels%2Caps%2C90&sr=8-3&th=1) 
+- 1 [Trash Can Dolly with Wheels](https://www.amazon.com/Rubbermaid-Commercial-Products-BRUTE-FG264000BLA/dp/B00002N8AI/ref=sr_1_3?crid=16FBLMR9AEEB1&keywords=Trash%2BCan%2BDolly%2Bwith%2BWheels&qid=1649170110&sprefix=trash%2Bcan%2Bdolly%2Bwith%2Bwheels%2Caps%2C90&sr=8-3&th=1) 
    - (Amazon link for the same piece we purhcased)
 - 1 Circular Mounting Plate  
 - 2 Configured Raspberry Pis  
