@@ -102,11 +102,11 @@ You’ll need the following components to assemble your Trashbot:
 
 The wired breadboard with all the components should look like this:
 
-<img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/IMG_7593.jpg" alt="Front" width="200"/>
+<img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/IMG_7593.jpg" alt="Front" width="300"/>
 
 Front
 
-<img src="images/backside.png" alt="Back" width="200"/>
+<img src="images/backside.png" alt="Back" width="300"/>
 
 Back
 
@@ -141,6 +141,9 @@ Follow the GitHub Documentation [here](https://github.com/IRL-CT/Mobile_HRI_Lab_
 
 ---
 ## Part 3. Making the Robot Move: Calibration
+
+We are using a motor controller board called [ODrive v3.6](https://odriverobotics.com/shop/odrive-v36). The instructions below are based on a [guide](https://docs.odriverobotics.com/v/0.5.5/hoverboard.html) provided by ODrive.
+
 1. Use the [RPi Imager](https://www.raspberrypi.com/software/) to write [image](https://drive.google.com/file/d/1PMWyJUoA-CJ73vktrp3nPKiykwzOaauU/view?usp=sharing) to the SD cards. We recommend using storage of 16GB or larger. [Online Guide](https://howchoo.com/pi/raspberry-pi-imager#write-a-custom-image).
 2. Insert the SD card back to the Raspberry Pi, and SSH into the Raspberry Pi that's connected to the ODrive.
 ```
@@ -161,8 +164,12 @@ odrivetool restore-config mobilehri_config.json
 # In the same remote session (RPi)
 odrivetool
 ```
-3. Since your ODrive is on (via the lithium power battery) you should have a message "Connected to ODrive xxxxxxxx" otherwise, you may want to re-connect the power battery. First, you will clear errors with `odrv0.clear_errors()` and dump errors with `dump_errors(odrv0)`
-4. Calibrate both wheels with the following:
+3. Connect the ODrive with your RPi using the micro-USB cable provided in the ODrive box, and then plug the JST connector from your wheels to the filtering PCB. Now, you can also plug in the power.
+
+ <img src="images/full.jpeg" width="900"/>
+ 
+4. Since your ODrive is on (via the lithium power battery) you should have a message "Connected to ODrive xxxxxxxx" otherwise, you may want to re-connect the power battery. First, you will clear errors with `odrv0.clear_errors()` and dump errors with `dump_errors(odrv0)`
+5. Calibrate both wheels with the following:
 ```
 odrv0.axis0.requested_state = AXIS_STATE_FULL_CALIBRATION_SEQUENCE
 odrv0.axis1.requested_state = AXIS_STATE_FULL_CALIBRATION_SEQUENCE
