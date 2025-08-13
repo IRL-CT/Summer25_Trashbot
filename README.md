@@ -1,7 +1,7 @@
-# Summer 2025 Trashbot Project
+# Cornell Tech Interaction Lab (CT-IRL) Trashbot Project
 ---
 
-This is the official README file of the Summer 2025 Trashbot Project, an implementation of the [Mobile Robot Bootcamp](https://github.com/IRL-CT/Mobile_HRI_Lab_Hub/tree/main/Lab0) created by Professor Wendy Ju and Frank Bu. This README guides you through setting up and running the Trashbot prototype from scratch using a Raspberry Pi, ROS 2 Humble, Odrive.
+This is the official README file of the Trashbot Project maintain by Cornell Tech Interaction Lab (CT-IRL). This README guides you through setting up and running the Trashbot prototype from scratch using a Raspberry Pi, ROS 2 Humble, Odrive, and other materials.
 
 ---
 ## Purpose
