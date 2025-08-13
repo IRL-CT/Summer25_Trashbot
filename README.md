@@ -47,9 +47,11 @@ You’ll need the following components to assemble your Trashbot:
    - (Laser cutting file)
 - 2 Configured Raspberry Pis
 - 1 [Breadboard](https://www.adafruit.com/product/1609?gad_source=1&gad_campaignid=21079227318&gbraid=0AAAAADx9JvStS3aXDb_mllD3Bp7VbBD-B&gclid=Cj0KCQjwzOvEBhDVARIsADHfJJQleAHXT8Y0V02g8GDo0Q8Qz8CXGuWnEYVbpuIQi6uBafvTW_3CEJoaAk30EALw_wcB)
-- 1 ODrive Motor Controller  
+- 1 ODrive Motor Controller
+- Jumper wires
+- 6 [22nF Capacitors](https://www.digikey.com/en/products/detail/kemet/C321C223J1G5TA/6655593?gclsrc=aw.ds&gad_source=1&gad_campaignid=20228387720&gbraid=0AAAAADrbLliOFSJPpOTt5Mr3oIG_oNF41&gclid=Cj0KCQjwzOvEBhDVARIsADHfJJSEXckVgZX1Fkqy7Uj77zpii-CK-u7dQ-7zyEhlsboji5qLK2g3UqkaAvGhEALw_wcB)
 - 1 XT60 Power Cable  
-- 2 Filtering PCBs  
+- 2 [Connetor Header through Holes](https://www.digikey.com/en/products/detail/w-rth-elektronik/61301611121/4846854?gclsrc=aw.ds&gad_source=1&gad_campaignid=20234014242&gbraid=0AAAAADrbLlg62CQ3HbYWTebTIkCYQNeAK&gclid=Cj0KCQjwzOvEBhDVARIsADHfJJQFsmMR8j32adSK9mhqZaprCdMmgcyPhL2fkzkK786e_RbPG--H_1YaAqxfEALw_wcB)
 - 2 Hall Sensor Connectors  
 - 2 Power Banks  
 - 1 Lithium-Ion Power Battery  
@@ -96,7 +98,7 @@ You’ll need the following components to assemble your Trashbot:
 
 <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2b2a_odrive.png" alt="Alt text" width="200"/>
 
-3. Made two customized soldered breadboard with capacitors to reduce the signal interference between two wheels for Motor0 and Motor1. See ODrive forum for the [detailed reasons](https://discourse.odriverobotics.com/t/encoder-error-error-illegal-hall-state/1047/12?page=2). Cut a portion from the breadboard, approximately half size of the 12-pin connector on the ODrive. **solder 3 22nF capacitors** and 5 connector pins on the breadboard base on this layout. Repeat for another one.
+3. Made two customized soldered breadboard with capacitors to reduce the signal interference between two wheels for Motor0 and Motor1. See ODrive forum for the [detailed reasons](https://discourse.odriverobotics.com/t/encoder-error-error-illegal-hall-state/1047/12?page=2). Cut a portion from the breadboard, approximately half size of the 12-pin connector on the ODrive. **solder 3 22nF capacitors** and 5 connector headers on the breadboard base on this layout. Repeat for another one.
 
 <img src="images/breadboard_wiring.png" alt="Breadboard wiring" width="200"/>
 
@@ -130,12 +132,13 @@ Back
 
 <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2b6a_resistor.png" alt="Alt text" width="200"/>
 
-7. **Connect** the motor-controller Raspberry Pi to the ODrive using the HDMI to USB-A cable. Set this Pi aside for now.
-8. **Power** the ODrive by connecting the lithium-ion battery via the XT60 cable.
-9. **Connect** a power bank to the first Raspberry Pi (USB-A to USB-C).
-10. **Connect** the second power bank to the second Raspberry Pi (USB-A to USB-C).
+7. Connect the ODrive with your RPi using the micro-USB cable provided in the ODrive box
 
-<img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2b9a_trashbot_front.png" alt="Alt text" width="200"/> <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2b_9b_trashbot_back.png" alt="Alt text" width="200"/>
+ <img src="images/full.jpeg" width="900"/>
+
+8. Mount the circular plate with all the components, modified trolly, and hover board all together, and plug in the power.
+
+<img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2b9a_trashbot_front.png" alt="Alt text" width="400"/> <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2b_9b_trashbot_back.png" alt="Alt text" width="400"/>
 
 Follow the GitHub Documentation [here](https://github.com/IRL-CT/Mobile_HRI_Lab_Hub/blob/main/Lab3/Readme.md#part-b-hardware-setup) for more information on the setup.
 
@@ -161,14 +164,43 @@ curl -LJO https://raw.githubusercontent.com/FAR-Lab/Mobile_HRI_Lab_Hub/main/Lab3
 # Load the config file to your ODrive
 odrivetool restore-config mobilehri_config.json
 # Ignore the warnings about some parameters not being loaded. You will recalibrate the motors anyway.
+```
+ ### Program ODrive in Python.
+```bash
 # In the same remote session (RPi)
 odrivetool
 ```
-3. Connect the ODrive with your RPi using the micro-USB cable provided in the ODrive box, and then plug the JST connector from your wheels to the filtering PCB. Now, you can also plug in the power.
+This will open an interactive IPython tool that communicates with your odrive board specifically. You should see something like the following:
 
- <img src="images/full.jpeg" width="900"/>
- 
+<img src="images/odrivetool.jpg" width="400">
+
+Make sure the terminal displays `Connected to ODrive xxxxxxxx`. If the terminal does not report connected to ODrive, check your cable connections between the RPi and the ODrive. Also make sure the battery is plugged in for ODrive.
+
+
+Here are some basic terminology about this tool.
+
+
+> `odrv0` refers to the ODrive you are currently connected to. If multiple Odrives are connected, the index can be used to differentiate them (odrv0, odrv1, etc.).
+`odrv0.axis0` and `odrv0.axis1` refer to the two axes on ODrive, each axis is used to control one hub motor/wheel. `dump_errors(odrv0)` is a handy command to show current errors.`odrv0.clear_errors()` is a useful command to reset your ODrive errors.
+
+### Now, let's calibrate the ODrive with the attached motors.
+The purpose of this step is to figure out basic motor parameters automatically and check if any of the configurations are wrong. All commands below should run in the interactive IPython tool.
 4. Since your ODrive is on (via the lithium power battery) you should have a message "Connected to ODrive xxxxxxxx" otherwise, you may want to re-connect the power battery. First, you will clear errors with `odrv0.clear_errors()` and dump errors with `dump_errors(odrv0)`
+
+```python
+# reset errors
+odrv0.clear_errors()
+# full calibration sequence includes motor calibration and hall encoder calibration.
+odrv0.axis0.requested_state = AXIS_STATE_FULL_CALIBRATION_SEQUENCE
+# Your motor should make a beeping sound, and start rotating for a few turns.
+```
+```python
+# Once your motor stops
+dump_errors(odrv0)
+```
+
+<img src="images/dump_error.jpg" width="200">
+
 5. Calibrate both wheels with the following:
 ```
 odrv0.axis0.requested_state = AXIS_STATE_FULL_CALIBRATION_SEQUENCE
