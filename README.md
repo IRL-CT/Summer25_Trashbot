@@ -45,7 +45,8 @@ You’ll need the following components to assemble your Trashbot:
    - (Laser cutting file)
 - 1 [Circular Mounting Plate](images/trashbot_guidlines_all.ai)
    - (Laser cutting file)
-- 2 Configured Raspberry Pis  
+- 2 Configured Raspberry Pis
+- 1 [Breadboard](https://www.adafruit.com/product/1609?gad_source=1&gad_campaignid=21079227318&gbraid=0AAAAADx9JvStS3aXDb_mllD3Bp7VbBD-B&gclid=Cj0KCQjwzOvEBhDVARIsADHfJJQleAHXT8Y0V02g8GDo0Q8Qz8CXGuWnEYVbpuIQi6uBafvTW_3CEJoaAk30EALw_wcB)
 - 1 ODrive Motor Controller  
 - 1 XT60 Power Cable  
 - 2 Filtering PCBs  
@@ -95,22 +96,26 @@ You’ll need the following components to assemble your Trashbot:
 
 <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2b2a_odrive.png" alt="Alt text" width="200"/>
 
-3. Made two customized PCBs with capacitors to reduce the signal interference between two wheels for Motor0 and Motor1. See ODrive forum for the [detailed reasons](https://discourse.odriverobotics.com/t/encoder-error-error-illegal-hall-state/1047/12?page=2). Cut a portion from the Breadboard, solder capacitors and connector pins on it base on this layout. Repeat for another one.
+3. Made two customized soldered breadboard with capacitors to reduce the signal interference between two wheels for Motor0 and Motor1. See ODrive forum for the [detailed reasons](https://discourse.odriverobotics.com/t/encoder-error-error-illegal-hall-state/1047/12?page=2). Cut a portion from the breadboard, approximately half size of the 12-pin connector on the ODrive. **solder 3 22nF capacitors** and 5 connector pins on the breadboard base on this layout. Repeat for another one.
 
 <img src="images/breadboard_wiring.png" alt="Breadboard wiring" width="200"/>
 
-The wired PCB should look like this:
+The wired breadboard with all the components should look like this:
 
-<img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/IMG_7593.jpg" alt="Front" width="200"/><img src="images/backside.png" alt="Back" width="200"/>
+<img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/IMG_7593.jpg" alt="Front" width="200"/>
+
+Front
+
+<img src="images/backside.png" alt="Back" width="200"/>
+
+Back
 
 **Solder** the hall sensor wires from the bottom of the hoverboard motors to the customized PCB, and route them through the rectanglar holes in the circular plate.
 
-<img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2b3a_pcb.png" alt="Alt text" width="200"/>
-
  - Ensure matching wire and pin: red to 5V,  yellow to A, blue to B, green to Z, and black to GND.
- - Place one PCB on the far right side for M0; another PCB right next to it (both leave 3.3V slot)
+ - Place one breadboard on the far right side for M0; another right next to it (both leave 3.3V slot empty)
 
-4. **Attach** the customized PCBs to the hall sensor connectors:  
+4. **Attach** the customized breadboard to the hall sensor connectors(notice we used a customized PCB, it has the same functionalites of the breadboard one you made):  
 
 <img src="https://github.com/IRL-CT/Summer25_Trashbot/blob/main/images/2b4a_pcb.png" alt="Alt text" width="400"/>
 
@@ -397,10 +402,10 @@ ros2 topic echo /cmd_vel
 ```
 We defined the L1 button to be the safety button to avoid unintentional control, this is a simple `if` statement in the code.
 
-> Feel free to customize my code (`https://github.com/IRL-CT/mobilehri_ws/src/mobilehri2023/joy_teleop_keymapping/joy_teleop_keymapping/keymapping_node.py`) however you want. There are so many buttons and triggers on the controller, be creative!
+> Feel free to customize our [code](https://github.com/IRL-CT/mobilehri_ws/src/mobilehri2023/joy_teleop_keymapping/joy_teleop_keymapping/keymapping_node.py) however you want. There are so many buttons and triggers on the controller, be creative!
 
 ## Part E. Try it with your hoverboard!
-Let's do some math! (This is probably the only math you will do all semester, so a highlight of the course.) In the previous step, we mapped joystick controller commands to a message type called twist (mainly linear velocity and angular velocity). We need another layer of computation to convert twist to commands that ODrive understands (angular velocity for wheels on each axis). Imagine the following simplified diagram. 
+Let's do some math! In the previous step, we mapped joystick controller commands to a message type called twist (mainly linear velocity and angular velocity). We need another layer of computation to convert twist to commands that ODrive understands (angular velocity for wheels on each axis). Imagine the following simplified diagram. 
 
 In this problem, the following variables are known
 - $v$: robot linear velocity 
@@ -445,9 +450,9 @@ v_l = (v - \frac{lw}{2})/r
 v_r = (v + \frac{lw}{2})/r
 ```
 
-**TODO**: Complete the code in `https://github.com/IRL-CT/mobilehri_ws/src/mobilehri2023/mobile_robot_control/mobile_robot_control/odrive_command.py` with the computation we just did. I strongly recommend you to use VS Code to code (check previous lab for details). Your **TODOs** are on line 54 and 74. For now, you don't need to make changes for wheel track distance, but you need to after you made your own robot.
+**Notice**: the code might differ with the specific hoverboards you use. Modify the code base on the dimension of the hoverboard you use. Wheel track distance is renamed as `self.wheel_track`. Change the wheel track distance to match your own robot. 
 
-Wheel track distance is renamed as `self.wheel_track`. In the future, change the wheel track distance to match your own robot. 
+There are **TODO** lines in the `orive_commnad.py`. Please refer to our [sample code](https://github.com/IRL-CT/mobilehri2023/blob/c8c9d7ab1e6bb15e9d40d8b4d5e6aaeebdbeb43f/mobile_robot_control/mobile_robot_control/odrive_command.py#L86) for the whole implementation, but do chanage parameters before you start building.
 
 ```bash
 # On RPi
@@ -474,18 +479,6 @@ The `joy_node` reads in controller commands, the `joy_teleop_keymapping_node` ma
 </details>
 
 Now, press and hold `L1` on your controller and play with the two joysticks. Hopefully your wheels will start spinning now!
-## Part F. Mount Your Wheels To Chassis
-(Optional, but will be required by next week if you don't get to it)
-
-Using the honeycomb cardboard, hot-glue and zip ties, mount the hub motor wheels to a robot chassis so that you can control the robot while it rolls around on the ground. 
-
-Include pictures/videos of your moving robot chassis.
-
-### Again, deliverables for this lab are: 
-
-1. Videos of you controlling the wheels with your joystick controller properly.
-2. Three ideas on how to use controllers' rumble feature for Wizard of Oz.
-3. (optional) Documentation of the robot proto-chassis
 
 When all is set and done, place the trashbin on top of the bot and start moving around the trashbot!
 
